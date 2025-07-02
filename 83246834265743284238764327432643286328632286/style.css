@@ -1,0 +1,201 @@
+/* Custom CSS for the website */
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* Romantic Gradient Background */
+    background: linear-gradient(135deg, #FFC0CB 0%, #FFB6C1 25%, #FFDAB9 50%, #E0BBE4 75%, #957DAD 100%);
+    overflow: hidden; /* Prevent scrollbars */
+    position: relative;
+    padding: 20px; /* Add some padding around the content */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+/* Custom font for headings */
+.font-script {
+    font-family: 'Great Vibes', cursive;
+}
+
+.font-inter {
+    font-family: 'Inter', sans-serif;
+}
+
+.website-container {
+    position: relative;
+    z-index: 1; /* Ensure container is above background effects */
+    max-width: 100vw; /* Use full viewport width */
+    max-height: 100vh; /* Use full viewport height */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Button Styling */
+.btn {
+    padding: 1.5rem 3rem;
+    border-radius: 9999px; /* Fully rounded */
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border: none;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff6b6b, #ee5253); /* Reddish-pink gradient */
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #ee5253, #ff6b6b);
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary { /* Yes button */
+    background: linear-gradient(45deg, #4CAF50, #8BC34A); /* Green gradient */
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(45deg, #8BC34A, #4CAF50);
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn-tertiary { /* No button */
+    background: linear-gradient(45deg, #f44336, #FF9800); /* Orange-red gradient */
+    color: white;
+}
+
+.btn-tertiary:hover {
+    background: linear-gradient(45deg, #FF9800, #f44336);
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.animate-pulse {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+    animation: fadeIn 1s ease-out 0.5s forwards; /* Delayed fade-in */
+    opacity: 0; /* Start hidden */
+}
+
+/* Yes button growth classes */
+.yes-grow-1 {
+    font-size: 4rem !important; /* Larger font */
+    padding: 2rem 4rem !important; /* Larger padding */
+    transform: scale(1.2) !important;
+}
+
+.yes-grow-2 {
+    font-size: 6rem !important;
+    padding: 3rem 6rem !important;
+    transform: scale(1.5) !important;
+}
+
+.yes-grow-3 {
+    font-size: 8rem !important;
+    padding: 4rem 8rem !important;
+    transform: scale(2) !important;
+}
+
+.yes-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0 !important; /* Remove border radius for full screen */
+    font-size: 10vw !important; /* Responsive font size for full screen */
+    padding: 0 !important; /* Remove padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #4CAF50, #8BC34A) !important; /* Ensure gradient stays */
+    z-index: 100; /* Bring to front */
+    transform: scale(1) !important; /* Reset scale if any */
+    transition: all 0.7s ease-in-out !important; /* Smooth transition to fullscreen */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .btn {
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+    }
+    #initialScreen .btn {
+        font-size: 3rem;
+        padding: 1rem 2rem;
+    }
+    #questionScreen p {
+        font-size: 4xl;
+    }
+    #questionScreen .btn {
+        font-size: 2xl;
+        padding: 1rem 2rem;
+    }
+    #finalMessageScreen p {
+        font-size: 3xl;
+    }
+    #finalMessageScreen .animate-fade-in-delay {
+        font-size: 2.5rem;
+    }
+    .yes-fullscreen {
+        font-size: 15vw !important; /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.2rem;
+    }
+    #initialScreen .btn {
+        font-size: 2.5rem;
+        padding: 0.8rem 1.5rem;
+    }
+    #questionScreen p {
+        font-size: 3xl;
+    }
+    #questionScreen .btn {
+        font-size: xl;
+        padding: 0.8rem 1.5rem;
+    }
+    #finalMessageScreen p {
+        font-size: 2.5rem;
+    }
+    #finalMessageScreen .animate-fade-in-delay {
+        font-size: 2rem;
+    }
+    .yes-fullscreen {
+        font-size: 20vw !important; /* Further adjustment */
+    }
+}
