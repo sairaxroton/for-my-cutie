@@ -1,56 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Dearest Love</title>
-    <!-- Google Fonts: Inter for general text, and a romantic font like 'Great Vibes' -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Dearest Love</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Fonts & Colors -->
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #ffdde1, #ee9ca7); /* Romantic gradient */
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .font-script {
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 1s ease-in forwards;
+    }
+
+    .animate-fade-in-delay {
+      animation: fadeIn 1.5s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      background-color: white;
+      color: #ff4081;
+      border: 2px solid #ff4081;
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      background-color: #ff4081;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .website-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    #yesBtn {
+      background-color: #4ade80; /* Green */
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #f87171; /* Red */
+      color: white;
+    }
+
+    #yesBtn:hover {
+      background-color: #22c55e;
+    }
+
+    #noBtn:hover {
+      background-color: #ef4444;
+    }
+  </style>
 </head>
-<body class="antialiased">
-    <div class="website-container">
-        <!-- Initial "Go Ahead" Button -->
-        <div id="initialScreen" class="flex flex-col items-center justify-center h-full">
-            <button id="goAheadBtn" class="btn btn-primary text-4xl md:text-5xl p-6 md:p-8 rounded-full shadow-2xl animate-pulse">
-                Go Ahead!
-            </button>
-        </div>
 
-        <!-- Hidden content for the question and buttons -->
-        <div id="questionScreen" class="hidden flex flex-col items-center justify-center h-full text-center">
-            <!-- Funny message display -->
-            <p id="noMessageDisplay" class="text-pink-200 text-2xl md:text-3xl font-inter mb-4 drop-shadow-lg hidden animate-fade-in">
-                <!-- Message will appear here -->
-            </p>
-            <p class="text-white text-5xl md:text-6xl font-script mb-10 drop-shadow-lg animate-fade-in">
-                Do you love me?
-            </p>
-            <div class="flex flex-col sm:flex-row gap-8">
-                <button id="yesBtn" class="btn btn-secondary text-3xl md:text-4xl p-5 md:p-7 shadow-xl transform transition-all duration-300 ease-in-out">
-                    Yes
-                </button>
-                <button id="noBtn" class="btn btn-tertiary text-3xl md:text-4xl p-5 md:p-7 shadow-xl transform transition-all duration-300 ease-in-out">
-                    No
-                </button>
-            </div>
-        </div>
-
-        <!-- Hidden content for the final message -->
-        <div id="finalMessageScreen" class="hidden flex flex-col items-center justify-center h-full text-center">
-            <p class="text-white text-5xl md:text-6xl font-script mb-6 drop-shadow-lg animate-fade-in">
-                আমি জানতাম তুমি আমাকে ভালোবাসো! 🥰
-            </p>
-            <p class="text-pink-100 text-4xl md:text-5xl font-inter drop-shadow-lg animate-fade-in-delay">
-                Love you too!
-            </p>
-        </div>
+<body>
+  <div class="website-container">
+    <!-- Initial Screen -->
+    <div id="initialScreen" class="flex flex-col items-center justify-center text-center">
+      <h1 class="text-5xl font-script text-pink-700 mb-10 animate-fade-in">Hey Love ❤️</h1>
+      <button id="goAheadBtn" class="btn text-4xl px-10 py-6 animate-bounce">
+        Go Ahead!
+      </button>
     </div>
 
-    <!-- Link to external JavaScript file -->
-    <script src="script.js"></script>
+    <!-- Question Screen -->
+    <div id="questionScreen" class="hidden flex flex-col items-center justify-center text-center">
+      <p id="noMessageDisplay" class="text-red-200 text-2xl mb-4 hidden animate-fade-in"></p>
+      <p class="text-white text-5xl font-script mb-10 animate-fade-in">
+        Do you love me?
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6">
+        <button id="yesBtn" class="text-3xl px-8 py-4 rounded-full shadow-lg transition-all duration-300">
+          Yes
+        </button>
+        <button id="noBtn" class="text-3xl px-8 py-4 rounded-full shadow-lg transition-all duration-300">
+          No
+        </button>
+      </div>
+    </div>
+
+    <!-- Final Message Screen -->
+    <div id="finalMessageScreen" class="hidden flex flex-col items-center justify-center text-center">
+      <p class="text-white text-5xl font-script mb-4 animate-fade-in">
+        আমি জানতাম তুমি আমাকে ভালোবাসো! 🥰
+      </p>
+      <p class="text-white text-4xl animate-fade-in-delay">
+        Love you too, jaan! 💖
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
