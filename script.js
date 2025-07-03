@@ -5,69 +5,65 @@ document.addEventListener('DOMContentLoaded', () => {
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
     const finalMessageScreen = document.getElementById('finalMessageScreen');
-    const noMessageDisplay = document.getElementById('noMessageDisplay'); // New element for messages
+    const noMessageDisplay = document.getElementById('noMessageDisplay');
 
     let noClickCount = 0;
-    const maxNoClicks = 10; // "No" button growth in 10 steps
+    const maxNoClicks = 10;
 
-    // Array of funny messages for "No" clicks
     const funnyMessages = [
-        "I think you clicked this by mistake, try again! 😉",
-        "Oops! Did your finger slip? 🤔",
-        "Are you sure about that? 😉",
-        "Come on, you know the right answer! 😊",
-        "My heart says you meant 'Yes'! ❤️",
-        "Let's try that again, shall we? 😉",
-        "Don't make me sad! 🥺",
-        "You're just playing hard to get, aren't you? 😉",
-        "One more chance to say 'Yes'! 😊",
-        "I'm pretty sure you love me! 🥰"
+        "এইটা নিশ্চয় ভুল করে ক্লিক করছো! 😜",
+        "আবার চলো ট্রাই করি? 🤭",
+        "বউ রাগ করে না! বলো না ভালোবাসো? 🥺",
+        "তুমি আমার প্রেম, ভুলে গেছো নাকি? 😌",
+        "মনটা কেমন জানি কষ্ট পেলো... 😢",
+        "তুমি কি জানো না তুমি আমার সব কিছু? 🥹",
+        "এইটা কি তোমার ফাইনাল উত্তর? 😰",
+        "না মানে, তুমি না আমার জান! 😭",
+        "আরেকবার চিন্তা করো প্লিজ... 😔",
+        "তোমাকে না পেলে আমি পাগল হয়ে যাবো! 😩"
     ];
 
-    // Function to show a screen and hide others
     function showScreen(screenToShow) {
-        initialScreen.classList.add('hidden');
-        questionScreen.classList.add('hidden');
-        finalMessageScreen.classList.add('hidden');
-
+        [initialScreen, questionScreen, finalMessageScreen].forEach(screen => {
+            screen.classList.add('hidden');
+            screen.classList.remove('flex');
+        });
         screenToShow.classList.remove('hidden');
-        screenToShow.classList.add('flex'); // Ensure it's displayed as flex for centering
+        screenToShow.classList.add('flex');
     }
 
-    // Initial state: show only the "Go Ahead" button
     showScreen(initialScreen);
 
-    // Event listener for "Go Ahead" button
     goAheadBtn.addEventListener('click', () => {
         showScreen(questionScreen);
     });
 
-    // Event listener for "No" button
     noBtn.addEventListener('click', () => {
         noClickCount++;
 
-        // Display a funny message
-        const messageIndex = Math.min(noClickCount - 1, funnyMessages.length - 1); // Cycle through messages
+        const messageIndex = Math.min(noClickCount - 1, funnyMessages.length - 1);
         noMessageDisplay.textContent = funnyMessages[messageIndex];
-        noMessageDisplay.classList.remove('hidden');
-        noMessageDisplay.classList.remove('animate-fade-in'); // Reset animation
-        void noMessageDisplay.offsetWidth; // Trigger reflow to restart animation
+        noMessageDisplay.classList.remove('hidden', 'animate-fade-in');
+        void noMessageDisplay.offsetWidth;
         noMessageDisplay.classList.add('animate-fade-in');
 
-        // Calculate scale for Yes button based on noClickCount
-        const scaleFactor = 1 + (noClickCount * 0.1); // Increase by 0.1 for each click (10 steps)
+        // Button grows
+        const scaleFactor = 1 + (noClickCount * 0.1);
         yesBtn.style.transform = `scale(${scaleFactor})`;
 
+        // Button shakes slightly to grab attention
+        yesBtn.classList.add('animate-bounce');
+        setTimeout(() => yesBtn.classList.remove('animate-bounce'), 600);
+
+        // Final transformation
         if (noClickCount >= maxNoClicks) {
-            // After maxNoClicks, make the Yes button fullscreen
-            yesBtn.classList.add('yes-fullscreen');
-            noBtn.classList.add('hidden'); // Hide the No button once Yes is fullscreen
-            yesBtn.textContent = "YES!"; // Make the text more emphatic
-            noMessageDisplay.classList.add('hidden'); // Hide the funny message
+            yesBtn.textContent = "YES! 😍";
+            yesBtn.classList.add('w-full', 'h-40', 'text-5xl', 'bg-pink-500');
+            noBtn.classList.add('hidden');
+            noMessageDisplay.classList.add('hidden');
         }
     });
 
-    // Event listener for "Yes" button
     yesBtn.addEventListener('click', () => {
         showScreen(finalMessageScreen);
     });
