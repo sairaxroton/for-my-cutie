@@ -1,19 +1,18 @@
 /* 🌸 Basic Setup 🌸 */
 body {
-    font-family: 'Inter', 'Noto Sans Bengali', sans-serif; /* বাংলা ফন্ট যুক্ত করা হয়েছে */
+    font-family: 'Inter', 'Hind Siliguri', 'Tiro Bangla', sans-serif; /* স্টাইলিশ বাংলা ফন্ট যুক্ত করা হয়েছে */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-image: url('https://source.unsplash.com/random/1920x1080/?romantic,flowers,love'); /* রোমান্টিক ব্যাকগ্রাউন্ড ছবি */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(135deg, #FF6B6B, #FFC0CB, #ADD8E6, #90EE90); /* অ্যানিমেটেড গ্রেডিয়েন্ট */
+    background-size: 400% 400%; /* গ্রেডিয়েন্টের সাইজ বড় করা হয়েছে */
+    animation: gradientAnimation 15s ease infinite alternate; /* গ্রেডিয়েন্ট অ্যানিমেশন */
     position: relative;
     padding: 20px;
     box-sizing: border-box;
-    overflow: hidden; /* অতিরিক্ত স্ক্রলবার এড়াতে */
+    overflow: hidden;
 }
 
 /* 🌫️ Dark Overlay for Better Readability */
@@ -22,8 +21,15 @@ body::before {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* একটু গাঢ় করা হলো */
+    background: rgba(0, 0, 0, 0.35); /* আগের মতো ওভারলে */
     z-index: 0;
+}
+
+/* 🎨 Animated Gradient Background */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* ✍️ Fonts */
@@ -33,9 +39,13 @@ body::before {
 .font-inter {
     font-family: 'Inter', sans-serif;
 }
-/* বাংলা ফন্টের জন্য আলাদা ক্লাস, যদি প্রয়োজন হয় */
+/* স্টাইলিশ বাংলা ফন্ট */
 .font-bengali {
-    font-family: 'Noto Sans Bengali', sans-serif;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+/* আরও বেশি স্টাইলিশ বাংলা ফন্ট (যদি Great Vibes এর মতো দেখতে চান) */
+.font-bengali-stylish {
+    font-family: 'Tiro Bangla', cursive; /* বা 'Great Vibes' */
 }
 
 
@@ -44,12 +54,11 @@ body::before {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 500px; /* সর্বোচ্চ প্রস্থ নির্ধারণ করা হয়েছে */
-    /* min-height: 400px; */ /* ন্যূনতম উচ্চতা যোগ করা যেতে পারে */
+    max-width: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
-    perspective: 1000px; /* 3D ট্রানজিশনের জন্য */
+    perspective: 1000px;
 }
 
 /* 🎀 Buttons */
@@ -58,40 +67,40 @@ body::before {
     border-radius: 9999px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* স্মুথ ট্রানজিশন */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border: none;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* শ্যাডো বাড়ানো হলো */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* শ্যাডো বাড়ানো হলো */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* 💓 Go Ahead - প্রাথমিক কালারগুলো ব্যবহার করা হয়েছে */
+/* 💓 Go Ahead */
 .btn-primary {
-    background: linear-gradient(45deg, #FF69B4, #FFB6C1); /* Pink Gradient */
+    background: linear-gradient(45deg, #FF69B4, #FFB6C1);
     color: white;
 }
 .btn-primary:hover {
     background: linear-gradient(45deg, #FFB6C1, #FF69B4);
-    transform: scale(1.08); /* একটু বেশি স্কেল */
+    transform: scale(1.08);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* 💚 YES */
 .btn-secondary {
-    background: linear-gradient(45deg, #8BC34A, #4CAF50); /* Green Gradient */
+    background: linear-gradient(45deg, #8BC34A, #4CAF50);
     color: white;
 }
 .btn-secondary:hover {
-    background: linear: #4CAF50;
+    background: linear-gradient(45deg, #4CAF50, #8BC34A); /* হোভার এ গ্রেডিয়েন্ট পাল্টাবে */
     transform: scale(1.08);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* 🧡 NO */
 .btn-tertiary {
-    background: linear-gradient(45deg, #f44336, #FF9800); /* Red-Orange Gradient */
+    background: linear-gradient(45deg, #f44336, #FF9800);
     color: white;
 }
 .btn-tertiary:hover {
@@ -101,7 +110,15 @@ body::before {
 }
 
 /* 🌟 Animations */
-@keyframes pulse-once { /* শুধুমাত্র একবার পালস করে */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+.animate-pulse {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+@keyframes pulse-once {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
@@ -118,7 +135,7 @@ body::before {
     animation: fadeIn 1s ease-out forwards;
 }
 .animate-fade-in-delay {
-    animation: fadeIn 1.2s ease-out 0.5s forwards; /* ডিলি টাইম বাড়ানো হলো */
+    animation: fadeIn 1.2s ease-out 0.5s forwards;
     opacity: 0;
 }
 
@@ -133,7 +150,7 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(45deg, #8BC34A, #4CAF50) !important; /* গ্রিন গ্রেডিয়েন্ট */
+    background: linear-gradient(45deg, #8BC34A, #4CAF50) !important;
     z-index: 100;
     transform: scale(1) !important;
     transition: all 0.7s ease-in-out !important;
@@ -142,38 +159,87 @@ body::before {
 }
 
 
-/* 🌺 Flowers Animation */
+/* 💖 Click Particles */
+.click-particle {
+    position: fixed; /* Fixed পজিশন যাতে স্ক্রল করলে না সরে */
+    border-radius: 50%;
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: none; /* ক্লিক করা যাবে না */
+    z-index: 99; /* বোতামের উপর থাকবে */
+}
+
+/* 🌸 Flower Rain Animation (for Yes button click) */
+.flower-rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 50; /* অন্য কন্টেন্টের উপরে থাকবে কিন্তু ফুলস্ক্রিন YES এর নিচে */
+}
+
+.falling-flower {
+    position: absolute;
+    background-color: #FFC0CB; /* Light pink for flowers */
+    border-radius: 50%; /* পাপড়ির জন্য */
+    opacity: 0;
+    /* আরও স্টাইলিশ পাপড়ির জন্য: */
+    width: 20px;
+    height: 20px;
+    background-image: radial-gradient(circle at 30% 30%, white 10%, #FFC0CB 60%, #FF69B4 100%);
+    box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+    animation: fallAndRotate 10s linear infinite;
+}
+
+@keyframes fallAndRotate {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+
+/* 🌺 Background Flowers/Hearts ( আগের মতো ) */
 .flowers-animation, .hearts-animation {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* যাতে ক্লিক করা না যায় */
+    pointer-events: none;
     overflow: hidden;
-    z-index: 0; /* কন্টেন্টের নিচে থাকবে */
+    z-index: 0;
 }
 
 .flower-petal, .heart-particle {
     position: absolute;
-    background-color: #FFC0CB; /* Light pink for petals and hearts */
     border-radius: 50%;
     opacity: 0;
     animation: floatUp 15s infinite ease-in-out;
-    filter: blur(0.5px); /* একটু ব্লার */
+    filter: blur(0.5px);
 }
 
 .flower-petal {
     width: 15px;
     height: 15px;
-    background-color: #FFC0CB; /* Light pink */
+    background-color: #FFC0CB;
     box-shadow: 0 0 5px rgba(255, 192, 203, 0.7);
 }
 
 .heart-particle {
     width: 20px;
     height: 20px;
-    background-color: #FF69B4; /* Hot pink */
+    background-color: #FF69B4;
     transform: rotate(-45deg);
     box-shadow: 0 0 8px rgba(255, 105, 180, 0.8);
 }
@@ -195,7 +261,6 @@ body::before {
     left: 10px;
 }
 
-
 @keyframes floatUp {
     0% {
         transform: translateY(100vh) scale(0.5) rotate(0deg);
@@ -212,9 +277,6 @@ body::before {
         opacity: 0;
     }
 }
-
-/* Dynamically generated particles will use these */
-/* JavaScript will assign delays and sizes */
 
 
 /* 📱 Responsive */
