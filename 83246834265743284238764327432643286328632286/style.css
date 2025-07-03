@@ -6,12 +6,38 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    /* Romantic Gradient Background */
-    background: linear-gradient(135deg, #FFC0CB 0%, #FFB6C1 25%, #FFDAB9 50%, #E0BBE4 75%, #957DAD 100%);
+    /* Background Image with smooth animation */
+    background-image: url('imgg.jpg'); /* Using your local image */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* For parallax effect */
     overflow: hidden; /* Prevent scrollbars */
     position: relative;
     padding: 20px; /* Add some padding around the content */
     box-sizing: border-box; /* Include padding in element's total width and height */
+    animation: backgroundPan 30s linear infinite alternate; /* Subtle background animation */
+}
+
+/* Overlay for better text readability */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Dark overlay with 30% opacity */
+    z-index: 0; /* Ensure it's behind the content but above the background image */
+}
+
+/* Keyframes for background animation */
+@keyframes backgroundPan {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
 }
 
 /* Custom font for headings */
@@ -108,25 +134,7 @@ body {
     opacity: 0; /* Start hidden */
 }
 
-/* Yes button growth classes */
-.yes-grow-1 {
-    font-size: 4rem !important; /* Larger font */
-    padding: 2rem 4rem !important; /* Larger padding */
-    transform: scale(1.2) !important;
-}
-
-.yes-grow-2 {
-    font-size: 6rem !important;
-    padding: 3rem 6rem !important;
-    transform: scale(1.5) !important;
-}
-
-.yes-grow-3 {
-    font-size: 8rem !important;
-    padding: 4rem 8rem !important;
-    transform: scale(2) !important;
-}
-
+/* Yes button fullscreen class */
 .yes-fullscreen {
     position: fixed;
     top: 0;
