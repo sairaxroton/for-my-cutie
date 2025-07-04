@@ -1,322 +1,49 @@
-/* 🌸 Basic Setup 🌸 */
 body {
-    font-family: 'Inter', 'Hind Siliguri', 'Tiro Bangla', sans-serif; /* স্টাইলিশ বাংলা ফন্ট যুক্ত করা হয়েছে */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #FF6B6B, #FFC0CB, #ADD8E6, #90EE90); /* অ্যানিমেটেড গ্রেডিয়েন্ট */
-    background-size: 400% 400%; /* গ্রেডিয়েন্টের সাইজ বড় করা হয়েছে */
-    animation: gradientAnimation 15s ease infinite alternate; /* গ্রেডিয়েন্ট অ্যানিমেশন */
-    position: relative;
-    padding: 20px;
-    box-sizing: border-box;
     overflow: hidden;
+    height: 100vh;
+    /* স্মুথ গ্র্যাডিয়েন্ট ব্যাকগ্রাউন্ড */
+    background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #4F86E8, #FFCD00, #A23B72);
+    background-size: 400% 400%; /* অ্যানিমেশনের জন্য বড় সাইজ */
+    animation: gradientAnimation 20s ease-in-out infinite; /* ধীর এবং স্মুথ অ্যানিমেশন */
+    cursor: pointer;
+    position: relative; /* কণাগুলির পজিশনিংয়ের জন্য */
 }
 
-/* 🌫️ Dark Overlay for Better Readability */
-body::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.35); /* আগের মতো ওভারলে */
-    z-index: 0;
-}
-
-/* 🎨 Animated Gradient Background */
+/* গ্র্যাডিয়েন্ট ব্যাকগ্রাউন্ড অ্যানিমেশন */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* ✍️ Fonts */
-.font-script {
-    font-family: 'Great Vibes', cursive;
-}
-.font-inter {
-    font-family: 'Inter', sans-serif;
-}
-/* স্টাইলিশ বাংলা ফন্ট */
-.font-bengali {
-    font-family: 'Hind Siliguri', sans-serif;
-}
-/* আরও বেশি স্টাইলিশ বাংলা ফন্ট (যদি Great Vibes এর মতো দেখতে চান) */
-.font-bengali-stylish {
-    font-family: 'Tiro Bangla', cursive; /* বা 'Great Vibes' */
-}
-
-
-/* 🌐 Main Container */
-.website-container {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    perspective: 1000px;
-}
-
-/* 🎀 Buttons */
-.btn {
-    padding: 1.5rem 3rem;
-    border-radius: 9999px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-/* 💓 Go Ahead */
-.btn-primary {
-    background: linear-gradient(45deg, #FF69B4, #FFB6C1);
-    color: white;
-}
-.btn-primary:hover {
-    background: linear-gradient(45deg, #FFB6C1, #FF69B4);
-    transform: scale(1.08);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* 💚 YES */
-.btn-secondary {
-    background: linear-gradient(45deg, #8BC34A, #4CAF50);
-    color: white;
-}
-.btn-secondary:hover {
-    background: linear-gradient(45deg, #4CAF50, #8BC34A); /* হোভার এ গ্রেডিয়েন্ট পাল্টাবে */
-    transform: scale(1.08);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* 🧡 NO */
-.btn-tertiary {
-    background: linear-gradient(45deg, #f44336, #FF9800);
-    color: white;
-}
-.btn-tertiary:hover {
-    background: linear-gradient(45deg, #FF9800, #f44336);
-    transform: scale(1.08);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* 🌟 Animations */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-.animate-pulse {
-    animation: pulse 1.5s infinite ease-in-out;
-}
-@keyframes pulse-once {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-.animate-pulse-once {
-    animation: pulse-once 0.8s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in {
-    animation: fadeIn 1s ease-out forwards;
-}
-.animate-fade-in-delay {
-    animation: fadeIn 1.2s ease-out 0.5s forwards;
-    opacity: 0;
-}
-
-/* 🖼️ YES Button Fullscreen */
-.yes-fullscreen {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    border-radius: 0 !important;
-    font-size: 10vw !important;
-    padding: 0 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(45deg, #8BC34A, #4CAF50) !important;
-    z-index: 100;
-    transform: scale(1) !important;
-    transition: all 0.7s ease-in-out !important;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    box-shadow: none !important;
-}
-
-
-/* 💖 Click Particles */
-.click-particle {
-    position: fixed; /* Fixed পজিশন যাতে স্ক্রল করলে না সরে */
-    border-radius: 50%;
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: none; /* ক্লিক করা যাবে না */
-    z-index: 99; /* বোতামের উপর থাকবে */
-}
-
-/* 🌸 Flower Rain Animation (for Yes button click) */
-.flower-rain-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 50; /* অন্য কন্টেন্টের উপরে থাকবে কিন্তু ফুলস্ক্রিন YES এর নিচে */
-}
-
-.falling-flower {
+/* টাচ অ্যানিমেশন কণা */
+.particle {
     position: absolute;
-    background-color: #FFC0CB; /* Light pink for flowers */
-    border-radius: 50%; /* পাপড়ির জন্য */
+    width: 30px; /* কণার আকার বাড়ানো হয়েছে */
+    height: 30px;
+    border-radius: 50%;
     opacity: 0;
-    /* আরও স্টাইলিশ পাপড়ির জন্য: */
-    width: 20px;
-    height: 20px;
-    background-image: radial-gradient(circle at 30% 30%, white 10%, #FFC0CB 60%, #FF69B4 100%);
-    box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
-    animation: fallAndRotate 10s linear infinite;
+    transform: scale(0);
+    animation: expandAndFade 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; /* স্মুথ ইজিং ফাংশন */
+    pointer-events: none; /* ক্লিক ইভেন্ট পাস করার অনুমতি দেয় */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* কণার চারপাশে হালকা শ্যাডো */
 }
 
-@keyframes fallAndRotate {
+/* কণার প্রসারণ এবং অদৃশ্য হওয়ার অ্যানিমেশন */
+@keyframes expandAndFade {
     0% {
-        transform: translateY(-10vh) rotate(0deg);
-        opacity: 0;
+        transform: scale(0);
+        opacity: 1;
+        filter: blur(0px); /* শুরুতে কোনো ব্লার নেই */
     }
-    10% {
+    50% {
         opacity: 0.8;
+        filter: blur(5px); /* মাঝপথে হালকা ব্লার */
     }
     100% {
-        transform: translateY(110vh) rotate(720deg);
+        transform: scale(4); /* কণার প্রসারণ আরও বাড়ানো হয়েছে */
         opacity: 0;
-    }
-}
-
-
-/* 🌺 Background Flowers/Hearts ( আগের মতো ) */
-.flowers-animation, .hearts-animation {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.flower-petal, .heart-particle {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0;
-    animation: floatUp 15s infinite ease-in-out;
-    filter: blur(0.5px);
-}
-
-.flower-petal {
-    width: 15px;
-    height: 15px;
-    background-color: #FFC0CB;
-    box-shadow: 0 0 5px rgba(255, 192, 203, 0.7);
-}
-
-.heart-particle {
-    width: 20px;
-    height: 20px;
-    background-color: #FF69B4;
-    transform: rotate(-45deg);
-    box-shadow: 0 0 8px rgba(255, 105, 180, 0.8);
-}
-.heart-particle::before,
-.heart-particle::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #FF69B4;
-    border-radius: 50%;
-}
-.heart-particle::before {
-    top: -10px;
-    left: 0;
-}
-.heart-particle::after {
-    top: 0;
-    left: 10px;
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(100vh) scale(0.5) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-20vh) scale(1.2) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-
-/* 📱 Responsive */
-@media (max-width: 768px) {
-    .website-container {
-        padding: 0 10px;
-    }
-    .btn {
-        padding: 1rem 2rem;
-        font-size: 1.5rem;
-    }
-    #initialScreen .btn {
-        font-size: 2.5rem;
-    }
-    #questionScreen p {
-        font-size: 1.8rem;
-    }
-    #finalMessageScreen p {
-        font-size: 1.8rem;
-    }
-    .yes-fullscreen {
-        font-size: 15vw !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 1.2rem;
-    }
-    #initialScreen .btn {
-        font-size: 2rem;
-    }
-    #questionScreen p {
-        font-size: 1.5rem;
-    }
-    #finalMessageScreen p {
-        font-size: 1.5rem;
-    }
-    .yes-fullscreen {
-        font-size: 20vw !important;
+        filter: blur(10px); /* শেষে আরও ব্লার */
     }
 }
