@@ -1,32 +1,35 @@
-document.body.addEventListener('click', function(e) {
-    createParticle(e.clientX, e.clientY);
+document.addEventListener('mousemove', (e) => {
+    movePupils(e.clientX, e.clientY);
 });
 
-function createParticle(x, y) {
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-    
-    // কণার জন্য আরও সুন্দর এবং র্যান্ডম রঙ
-    const colors = [
-        '#FF6B6B', // Reddish
-        '#4ECDC4', // Turquoise
-        '#4F86E8', // Blue
-        '#FFCD00', // Yellow
-        '#A23B72', // Purple
-        '#00BFFF', // Deep Sky Blue
-        '#FF1493', // Deep Pink
-        '#32CD32'  // Lime Green
-    ];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    particle.style.backgroundColor = randomColor;
+document.addEventListener('touchmove', (e) => {
+    // Prevent default touch behavior (like scrolling)
+    e.preventDefault();
+    // Use the first touch point for movement
+    if (e.touches.length > 0) {
+        movePupils(e.touches[0].clientX, e.touches[0].clientY);
+    }
+}, { passive: false }); // passive: false to allow preventDefault
 
-    particle.style.left = `${x}px`;
-    particle.style.top = `${y}px`;
-    
-    document.body.appendChild(particle);
+function movePupils(mouseX, mouseY) {
+    const eyes = document.querySelectorAll('.eye');
 
-    // অ্যানিমেশন শেষ হওয়ার পর কণা সরিয়ে ফেলা
-    particle.addEventListener('animationend', () => {
-        particle.remove();
+    eyes.forEach(eye => {
+        const eyeRect = eye.getBoundingClientRect();
+        const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+        const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+
+        // Calculate the angle between the eye center and the mouse/touch position
+        const angle = Math.atan2(mouseY - eyeCenterY, mouseX - eyeCenterX);
+
+        // Calculate the maximum movement distance for the pupil
+        // This keeps the pupil within the eye
+        const maxPupilMoveDistance = (eyeRect.width / 2) - (eye.querySelector('.pupil').offsetWidth / 2);
+
+        // Calculate the new position for the pupil based on the angle and max distance
+        const pupilX = Math.cos(angle) * maxPupilMoveDistance;
+        const pupilY = Math.sin(angle) * maxPupilMoveDistance;
+
+        eye.querySelector('.pupil').style.transform = `translate(${pupilX}px, ${pupilY}px)`;
     });
 }
