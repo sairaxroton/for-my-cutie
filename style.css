@@ -1,49 +1,36 @@
 body {
     margin: 0;
-    overflow: hidden;
-    height: 100vh;
-    /* স্মুথ গ্র্যাডিয়েন্ট ব্যাকগ্রাউন্ড */
-    background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #4F86E8, #FFCD00, #A23B72);
-    background-size: 400% 400%; /* অ্যানিমেশনের জন্য বড় সাইজ */
-    animation: gradientAnimation 20s ease-in-out infinite; /* ধীর এবং স্মুথ অ্যানিমেশন */
-    cursor: pointer;
-    position: relative; /* কণাগুলির পজিশনিংয়ের জন্য */
+    overflow: hidden; /* Prevent scrollbars if eyes go out of bounds */
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    cursor: none; /* Hide default cursor */
 }
 
-/* গ্র্যাডিয়েন্ট ব্যাকগ্রাউন্ড অ্যানিমেশন */
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.eye-container {
+    display: flex;
+    gap: 100px; /* Space between the two eyes */
 }
 
-/* টাচ অ্যানিমেশন কণা */
-.particle {
-    position: absolute;
-    width: 30px; /* কণার আকার বাড়ানো হয়েছে */
-    height: 30px;
+.eye {
+    width: 200px;
+    height: 200px;
+    background-color: white;
     border-radius: 50%;
-    opacity: 0;
-    transform: scale(0);
-    animation: expandAndFade 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; /* স্মুথ ইজিং ফাংশন */
-    pointer-events: none; /* ক্লিক ইভেন্ট পাস করার অনুমতি দেয় */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* কণার চারপাশে হালকা শ্যাডো */
+    position: relative;
+    overflow: hidden; /* Keep pupil within eye bounds */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* কণার প্রসারণ এবং অদৃশ্য হওয়ার অ্যানিমেশন */
-@keyframes expandAndFade {
-    0% {
-        transform: scale(0);
-        opacity: 1;
-        filter: blur(0px); /* শুরুতে কোনো ব্লার নেই */
-    }
-    50% {
-        opacity: 0.8;
-        filter: blur(5px); /* মাঝপথে হালকা ব্লার */
-    }
-    100% {
-        transform: scale(4); /* কণার প্রসারণ আরও বাড়ানো হয়েছে */
-        opacity: 0;
-        filter: blur(10px); /* শেষে আরও ব্লার */
-    }
+.pupil {
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    transition: transform 0.1s linear; /* Smooth movement */
 }
