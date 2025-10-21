@@ -1,36 +1,142 @@
+/* গ্লোবাল এবং বেস স্টাইল */
 body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #1a1a2e; /* গাঢ় ব্যাকগ্রাউন্ড */
+    color: #e4e4e4;
     margin: 0;
-    overflow: hidden; /* Prevent scrollbars if eyes go out of bounds */
-    background-color: black;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Full viewport height */
-    cursor: none; /* Hide default cursor */
+    min-height: 100vh;
+    overflow: hidden; /* পার্টিক্যালস ঠিকঠাক রাখার জন্য */
 }
 
-.eye-container {
-    display: flex;
-    gap: 50px; /* Space between the two eyes - Reduced from 100px */
+/* পার্টিক্যাল ক্যানভাস স্টাইল */
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* কন্টেন্টের নিচে থাকবে */
+    pointer-events: none; /* ক্লিক যাতে ক্যানভাসের মধ্য দিয়ে যায় */
 }
 
-.eye {
-    width: 120px; /* Reduced from 200px */
-    height: 120px; /* Reduced from 200px */
-    background-color: white;
-    border-radius: 50%;
+/* কন্টেইনার স্টাইল */
+.container {
     position: relative;
-    overflow: hidden; /* Keep pupil within eye bounds */
+    z-index: 5; /* ক্যানভাসের উপরে থাকবে */
+    background: rgba(43, 49, 81, 0.9); /* সেমি-ট্রান্সপারেন্ট ব্যাকগ্রাউন্ড */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    border: 3px solid #ff416c; /* হালকা বর্ডার */
+}
+
+/* হেডার স্টাইল */
+header h1 {
+    color: #ff416c;
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+header p {
+    color: #a4a4b5;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+/* ইনপুট বক্স স্টাইল */
+.input-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#nameInput {
+    flex-grow: 1;
+    padding: 15px;
+    border: 2px solid #5a5a7d;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #1a1a2e;
+    color: #ffffff;
+    transition: border-color 0.3s;
+}
+
+#nameInput:focus {
+    outline: none;
+    border-color: #ff416c;
+    box-shadow: 0 0 10px rgba(255, 65, 108, 0.5);
+}
+
+#submitBtn {
+    padding: 15px 25px;
+    background-color: #ff416c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#submitBtn:hover {
+    background-color: #e53961;
+}
+
+#submitBtn:active {
+    transform: scale(0.98);
+}
+
+/* রেসপন্স বক্স স্টাইল */
+.response-box {
+    min-height: 100px;
+    padding: 20px;
+    background: #393e46;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #ffe66d; /* হাইলাইট কালার */
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    border-left: 5px solid #ff416c;
+    opacity: 0; /* শুরুতে লুকানো থাকবে */
+    transform: translateY(10px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-.pupil {
-    width: 48px; /* Reduced from 80px (maintaining proportion) */
-    height: 48px; /* Reduced from 80px (maintaining proportion) */
-    background-color: black;
-    border-radius: 50%;
-    position: absolute;
-    transition: transform 0.1s linear; /* Smooth movement */
+/* রেসপন্স দেখানোর সময় স্টাইল */
+.response-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* রেসপনসিভ ডিজাইন */
+@media (max-width: 500px) {
+    .container {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .input-box {
+        flex-direction: column;
+    }
+
+    #submitBtn {
+        width: 100%;
+    }
 }
